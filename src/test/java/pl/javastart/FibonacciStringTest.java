@@ -1,33 +1,39 @@
 package pl.javastart;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 public class FibonacciStringTest {
 
+    private FibonacciString fibonacciString;
+
+    @Before
+    public void init(){
+        fibonacciString = new FibonacciString();
+    }
     @Test
-    public void returnList() {
+    public void returnto10() {
+
+            //given
+            int a=10;
+
+            //when
+            int result = fibonacciString.fibonacciString(a);
+
+            //then
+            assertThat(result, is(2));
+        }
+    @Test
+    public void shouldReturnFor90(){
         //given
-        FibonacciString fibonacciString = new FibonacciString();
-        int liczba = 100;
-        List<Integer> liczby = new ArrayList<>();
-        liczby.add(1);
-        liczby.add(2);
-        liczby.add(3);
-        liczby.add(5);
-        liczby.add(8);
-        liczby.add(13);
-        liczby.add(21);
-        liczby.add(34);
-        liczby.add(55);
-        liczby.add(89);
+        int a=90;
+
         //when
-        List<Integer> result = fibonacciString.Numbers(liczba);
+        int result = fibonacciString.fibonacciString(a);
+
         //then
-        Assert.assertThat(result, CoreMatchers.is(liczby));
+        assertThat(result, is(44));
     }
 }

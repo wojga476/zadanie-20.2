@@ -5,19 +5,29 @@ import java.util.List;
 
 public class FibonacciString {
 
-    public static void main(String[] args) {
-        FibonacciString fibonacciString = new FibonacciString();
-        List<Integer> result = fibonacciString.Numbers(4000000);
-    }
+    public int fibonacciString(int maxSum) {
 
-    public List<Integer> Numbers(int numbers) {
+        int number1 = 1;
+        int number2 = 1;
+        int number3 = 0;
+        int sumNext = 0;
+        int suma = 0;
 
-        List<Integer> result = new ArrayList<>();
-        result.add(1);
-        result.add(2);
-        for (int i = 1; result.get(i)+result.get(i-1) < numbers; i++) {
-            result.add(result.get(i) + result.get(i-1));
+
+        while (sumNext < maxSum) {
+
+            if (number3 % 2 == 0) {
+                sumNext += number3;
+            }
+            if (sumNext < maxSum) {
+                suma = sumNext;
+            }
+
+            number3 = number1 + number2;
+
+            number1 = number2;
+            number2 = number3;
         }
-        return result;
+        return suma;
     }
 }
